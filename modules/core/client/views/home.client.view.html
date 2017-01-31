@@ -1,0 +1,221 @@
+<section ng-controller="HomeController">
+    <div id="loader" ng-show="isMatching">
+        <img src="modules/core/client/img/loaders/heart.gif" class="loader-gif" />
+        <h2 class="loader-text">Loading...</h2>
+    </div>
+    <div id="loader" class="row" ng-show="isLoading">
+        <img src="modules/core/client/img/loaders/loader.gif" class="loader-gif" />
+        <h2 class="loader-text">Loading...</h2>
+    </div>
+    <div class="jumbotron row">
+        <div class="col-md-4 col-md-push-8">
+            <img alt="Genotible" class="img-responsive" src="modules/core/client/img/brand/couples.png" />
+        </div>
+        <div class="col-md-6 col-md-pull-4">
+            <h1 class="lead ">
+        Why use Genotible ?
+      </h1>
+            <blockquote>One out of every 4 Nigerian you meet is a carrier of the Sickle Cell trait. 300,000 babies are born each year with the Sickle Cell Anaemia Disease. This is a rising figure that can be controlled with greater awareness and access to information.
+                <br>
+                <br> Got eyes for someone? Before you make a move, You can anonymously find out if your bae's genotype matches yours!</blockquote>
+        </div>
+    </div>
+    <div class="row lower-row text-center">
+        <div class="col-md-6 text-center">
+            <pre><h4><strong>A</strong>dd <Strong>D</Strong>ata</h4></pre>
+            <br>
+            <div class="col-md-12 text-left">
+                <form name="userForm" ng-submit="signup(userForm.$valid)" class="signin" novalidate autocomplete="off">
+                    <fieldset>
+                        <div class="form-group" show-errors>
+                            <div class="form-group col-md-6" show-errors>
+                                <label for="firstName">Your First Name</label>
+                                <input type="text" id="firstName" name="firstName" class="form-control" ng-model="credentials.firstName" placeholder="First Name" required>
+                                <div ng-messages="userForm.firstName.$error" role="alert">
+                                    <p class="help-block error-text" ng-message="required">First name is required.</p>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6" show-errors>
+                                <label for="lastName">Your Last Name</label>
+                                <input type="text" id="lastName" name="lastName" class="form-control" ng-model="credentials.lastName" placeholder="Last Name" required>
+                                <div ng-messages="userForm.lastName.$error" role="alert">
+                                    <p class="help-block error-text" ng-message="required">Last name is required.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" show-errors>
+                            <div class="form-group col-md-6" show-errors>
+                                <label for="genotype">Your Genotype</label>
+                                <select class="form-control" id="genotype" name="genotype" ng-model="credentials.genotype" ng-options="genotype for genotype in genotypes" required></select>
+                            </div>
+                            <div class="form-group col-md-6" show-errors>
+                                <label for="religion">Your World View</label>
+                                <select class="form-control" id="religion" name="religion" ng-model="credentials.religion" ng-options="religion for religion in religions" required></select>
+                            </div>
+                        </div>
+                        <div class="form-group" show-errors>
+                            <div class="form-group col-md-6" show-errors>
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" name="email" class="form-control" ng-model="credentials.email" placeholder="example@genotible.com" lowercase required>
+                                <div ng-messages="userForm.email.$error" role="alert">
+                                    <p class="help-block error-text" ng-message="required">Email address is required.</p>
+                                    <p class="help-block error-text" ng-message="email">Email address is invalid.</p>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6" show-errors>
+                                <label for="phoneNumber">Your Phone Number</label>
+                                <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" ng-model="credentials.phoneNumber" ui-mask="(999) 999-99999" ui-mask-placeholder ui-mask-placeholder-char="#" required>
+                                <div ng-messages="userForm.phoneNumber.$error" role="alert">
+                                    <p class="help-block error-text" ng-message="required">Phone number is required.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center form-group">
+                            <button type="submit" class="btn btn-danger">Submit</button>
+                        </div>
+                        <div ng-show="error.dataForm" class="text-center text-danger">
+                            <strong ng-bind="error.dataForm"></strong>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-1 text-center ">
+            <div class=" col-md-2 col-md-push-2 bar" style="border-right:1px solid #000; width:1px; height:375px"></div>
+            &nbsp
+        </div>
+        <div class="col-md-5  text-center">
+            <pre><h4><strong>G</strong>enotibility <strong>C</strong>heck</h4></pre>
+            <br>
+            <div class="col-md-12 text-left">
+                <form name="matchForm" ng-submit="runMatch(matchForm.$valid)" class="signin" novalidate autocomplete="off">
+                    <fieldset>
+                        <div class="form-group" show-errors>
+                            <div class="form-group col-md-6" show-errors>
+                                <label for="yourEmail">Your Email Address</label>
+                                <input type="email" id="yourEmail" name="yourEmail" class="form-control" ng-model="matchData.yourEmail" placeholder="example@genotible.com" lowercase required>
+                                <div ng-messages="matchForm.yourEmail.$error" role="alert">
+                                    <p class="help-block error-text" ng-message="required">Your Email address is required.</p>
+                                    <p class="help-block error-text" ng-message="yourEmail">Email address is invalid.</p>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6" show-errors>
+                                <label for="spouseEmail">Bae's Email Address</label>
+                                <input type="email" id="spouseEmail" name="spouseEmail" class="form-control" ng-model="matchData.spouseEmail" placeholder="example@genotible.com" lowercase required>
+                                <div ng-messages="matchForm.spouseEmail.$error" role="alert">
+                                    <p class="help-block error-text" ng-message="required">Your Bae's Email address is required.</p>
+                                    <p class="help-block error-text" ng-message="spouseEmail">Bae's Email address is invalid.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center form-group">
+                            <button type="submit" class="btn btn-danger">Match</button>
+                        </div>
+                        <div ng-show="error.checkForm" class="text-center text-danger">
+                            <strong ng-bind="error.checkForm"></strong>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class=" row mid-row">
+        <div class="col-md-4 text-left">
+            <div class="col-md-12 text-center">
+                <h4>Data Recorded</h4>
+                <h1 ng-bind="records.added"></h1>
+            </div>
+        </div>
+        <div class="col-md-4 text-left">
+            <div class="col-md-12 text-center">
+                <h4>Data Verified</h4>
+                <h1 ng-bind="records.verified"></h1>
+            </div>
+        </div>
+        <div class="col-md-4 text-left">
+            <div class="col-md-12 text-center">
+                <h4>Genotibility Checks</h4>
+                <h1 ng-bind="records.checked"></h1>
+            </div>
+        </div>
+    </div>
+    <div class=" row mid-row">
+        <div class="col-md-3 col-xs-4 text-center">
+            <div class="col-xs-12 text-center">
+                <div fb-like="myModel.Url" fb-like="myModel.Name"></div>
+            </div>
+        </div>
+        <div class="col-md-3 col-xs-3 text-center">
+            <div class="col-xs-12 text-center">
+                <div tweet="myModel.Name" tweet-url="myModel.Url"></div>
+            </div>
+        </div>
+        <div class="col-md-3 col-xs-2 text-center">
+            <div class="col-xs-12 text-center">
+                <div google-plus="myModel.Url"></div>
+            </div>
+        </div>
+        <div class="col-md-3 col-xs-2 text-center">
+            <div class="col-xs-12 text-center">
+                <div pin-it="myModel.Name" pin-it-image="myModel.ImageUrl" pin-it-url="myModel.Url"></div>
+            </div>
+        </div>
+    </div>
+    <div class=" row bottom-row">
+        <div class="col-md-6 text-left">
+            <div class="col-md-12 text-left">
+                <form name="feedbackForm" ng-submit="sendFeedback(feedbackForm.$valid)" class="signin" novalidate autocomplete="off">
+                    <fieldset>
+                        <div class="form-group col-md-12">
+                            <h3>Feedback Form</h3>
+                        </div>
+                        <div class="form-group col-md-6" show-errors>
+                            <label for="yourEmail">Your Email Address</label>
+                            <input type="email" id="yourEmail" name="yourEmail" class="form-control" ng-model="feedbackData.yourEmail" placeholder="example@genotible.com" lowercase required>
+                            <div ng-messages="feedbackForm.yourEmail.$error" role="alert">
+                                <p class="help-block error-text" ng-message="required">Your Email address is required.</p>
+                                <p class="help-block error-text" ng-message="yourEmail">Email address is invalid.</p>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-10" show-errors>
+                            <label for="message">Message</label>
+                            <textarea class="form-control" ng-model="feedbackData.message" form="feedbackForm" name="message" id="message" rows="10" wrap="soft" placeholder="Enter your feedback here" lowercase required></textarea>
+                            <div ng-messages="feedbackForm.message.$error" role="alert">
+                                <p class="help-block error-text" ng-message="required">Message is required.</p>
+                            </div>
+                        </div>
+                        <div class="text-left form-group col-md-12">
+                            <button type="submit" class="btn btn-danger">Submit</button>
+                        </div>
+                        <div ng-show="error.feedForm" class="text-center text-danger">
+                            <strong ng-bind="error.feedForm"></strong>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6 text-left">
+            <div class="col-md-12 text-left">
+            <div class="form-group col-md-12">
+                <h3>Contact Details</h3>
+                </div>
+                <br>
+                <div class="col-md-6 text-left">
+                    <label for="mail">Email Addresses</label>
+                    <br>
+                    <ul name="mail">
+                        <li>info@genotible.com</li>
+                    </ul>
+                </div>
+                <div class="col-md-6 text-left">
+                    <label for="numbers">Telephone Numbers</label>
+                    <br>
+                    <ul name="numbers">
+                        <li>+234 7016196972</li>
+                        <li>+234 9076100196</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

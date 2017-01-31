@@ -1,0 +1,220 @@
+/*from user.css*/
+
+@media (min-width: 992px) {
+    .nav-users {
+        position: fixed;
+    }
+    .modified-container {
+        width: 76%;
+    }
+    .img-responsive {
+        margin-top: 20px;
+    }
+    .navbar {
+        width: 76%;
+    }
+    .bar {
+        display: block !important;
+    }
+    .loader-gif {
+        top: 40% !important;
+    }
+    .loader-text {
+        top: 40% !important;
+    }
+}
+
+.bar {
+    display: none;
+}
+
+.logo {
+    max-height: 90px;
+    width: 70%;
+}
+
+.navbar {
+    height: 120px;
+    margin: 0 auto;
+}
+
+.social-account-container {
+    display: inline-block;
+    position: relative;
+}
+
+.btn-remove-account {
+    top: 10px;
+    right: 10px;
+    position: absolute;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.user-profile-picture {
+    min-height: 150px;
+    max-height: 150px;
+}
+
+
+/*added by me*/
+
+body {
+    background: #EDEDED
+}
+
+.nav li a {
+    color: #57B9CC
+}
+
+.container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.jumbotron {
+    border-radius: 0 !important;
+    margin-bottom: 0;
+}
+
+.jumbotron h1 {
+    font-size: 28px;
+}
+
+.jumbotron,
+.mid-row {
+    background-color: #FAFAFA;
+}
+
+.bottom-row {
+    background-color: #FFFFFF;
+}
+
+.lower-row,
+.mid-row {
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+.jumbotron,
+.lower-row,
+.bottom-row,
+.mid-row {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+textarea {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.navbar,
+.lower-row {
+    background: #FFFFFF
+}
+
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background-color: #FAFAFA;
+    opacity: .8;
+}
+
+.loader-gif {
+    position: relative;
+    top: 60%;
+    margin: auto;
+    display: block;
+}
+
+.loader-text {
+    position: relative;
+    top: 60%;
+    width: 120px;
+    margin: auto;
+    display: block;
+}
+
+
+/*was modified by me def : 50px*/
+
+.content {
+    margin-top: 120px;
+}
+
+.logo {
+    margin-top: 0 !important;
+}
+
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+    background-color: #57B9CC;
+}
+
+.undecorated-link:hover {
+    text-decoration: none;
+}
+
+[ng\:cloak],
+[ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+    display: none !important;
+}
+
+.header-profile-image {
+    opacity: 0.8;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.open .header-profile-image,
+a:hover .header-profile-image {
+    opacity: 1;
+}
+
+.user-header-dropdown-toggle {
+    padding-top: 11px !important;
+    padding-bottom: 11px !important;
+}
+
+.error-text {
+    display: none;
+}
+
+.has-error .help-block.error-text {
+    display: block;
+}
+
+.has-error .help-inline.error-text {
+    display: inline;
+}
